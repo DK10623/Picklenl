@@ -1,0 +1,51 @@
+---
+layout: base.njk
+title: Newsletter
+description: Subscribe to our pickleball newsletter for curated content, news, and updates delivered to your inbox
+permalink: /newsletter/
+---
+
+<section class="hero-small">
+  <div class="container">
+    <h1>Newsletter</h1>
+    <p class="lead">Stay informed with the latest pickleball news and insights</p>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container">
+    <h2>About Our Newsletter</h2>
+    <p>Our newsletter brings together the best content from across the pickleball world. We aggregate news from multiple trusted sources to provide you with a comprehensive view of what's happening in the sport.</p>
+    
+    <h3>What You'll Get</h3>
+    <ul>
+      <li><strong>Curated News:</strong> The most important stories from top pickleball publications</li>
+      <li><strong>Tournament Updates:</strong> Coverage of major tournaments and player rankings</li>
+      <li><strong>Training Tips:</strong> Expert advice to improve your game</li>
+      <li><strong>Community Events:</strong> Local and international pickleball gatherings</li>
+      <li><strong>Equipment Reviews:</strong> The latest gear and equipment recommendations</li>
+    </ul>
+
+    <h3>Subscribe via RSS</h3>
+    <p>Stay updated by subscribing to our RSS feed. You'll get instant notifications whenever new content is aggregated.</p>
+    
+    <div class="cta">
+      <a href="/rss.xml" class="button">Subscribe to RSS Feed</a>
+    </div>
+
+    <h3>Recent Updates</h3>
+    {% if collections.aggregatedItems.length > 0 %}
+      <div class="items-list">
+        {% for item in collections.aggregatedItems.slice(0, 5) %}
+          <article class="item-row">
+            <h4><a href="{{ item.link }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a></h4>
+            <p class="meta">
+              <span class="source">{{ item.source }}</span> • 
+              <span class="date">{{ item.pubDate | date("%B %d, %Y") }}</span>
+            </p>
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>

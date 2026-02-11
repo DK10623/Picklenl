@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="{{ site.language }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  {# Title #}
+  <title>{% if title %}{{ title }} - {% endif %}{{ site.title }}</title>
+  
+  {# Meta Description #}
+  <meta name="description" content="{{ description or site.description }}">
+  
+  {# Canonical URL #}
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  
+  {# RSS Feed #}
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }} RSS Feed" href="{{ site.url }}/rss.xml">
+  
+  {# OpenGraph #}
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{% if title %}{{ title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:description" content="{{ description or site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:locale" content="{{ site.locale }}">
+  
+  {# Twitter Card #}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if title %}{{ title }}{% else %}{{ site.title }}{% endif %}">
+  <meta name="twitter:description" content="{{ description or site.description }}">
+  
+  {# Styles #}
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  
+  {# JSON-LD Structured Data #}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "{{ site.title }}",
+        "url": "{{ site.url }}",
+        "description": "{{ site.description }}"
+      },
+      {
+        "@type": "WebSite",
+        "name": "{{ site.title }}",
+        "url": "{{ site.url }}",
+        "description": "{{ site.description }}",
+        "inLanguage": "{{ site.language }}"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="container">
+        <a href="/" class="logo">{{ site.title }}</a>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/newsletter/">Newsletter</a></li>
+          <li><a href="/events/">Events</a></li>
+          <li><a href="/tips/">Tips</a></li>
+          <li><a href="/rss.xml">RSS</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; {{ site.title }} {{ "now" | date("%Y") }}. All rights reserved.</p>
+      <p>Your source for pickleball news and community updates.</p>
+    </div>
+  </footer>
+</body>
+</html>

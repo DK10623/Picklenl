@@ -1,0 +1,23 @@
+{
+  "name": "picklenl",
+  "version": "1.0.0",
+  "description": "PickleNL - Dutch Pickleball Newsletter & Community Hub",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve",
+    "clean": "rm -rf _site"
+  },
+  "keywords": [
+    "pickleball",
+    "newsletter",
+    "netherlands"
+  ],
+  "author": "DK10623",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  },
+  "dependencies": {
+    "rss-parser": "^3.13.0"
+  }
+}
