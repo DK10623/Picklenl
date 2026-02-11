@@ -1,29 +1,41 @@
-async function fetchRSSFeed() {
-    const feedUrl = "https://rss.com/blog.rss"; // Replace with the desired RSS feed URL
-    const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`);
-    const data = await response.json();
+// Updated rss.js for integrating and fetching multiple RSS feeds
 
-    const feedContainer = document.getElementById('rss-feed');
-  
-    if (data && data.items) {
-        data.items.slice(0, 5).forEach(item => {
-            const article = document.createElement('article');
+class RSSFeed {
+    constructor(url) {
+        this.url = url;
+        this.feedData = [];
+    }
 
-            const title = document.createElement('h3');
-            title.innerText = item.title;
-            article.appendChild(title);
+    async fetchFeed() {
+        const response = await fetch(this.url);
+        const data = await response.text();
+        this.parseFeed(data);
+    }
 
-            const link = document.createElement('a');
-            link.href = item.link;
-            link.target = '_blank';
-            link.innerText = 'Read more';
-            article.appendChild(link);
-
-            feedContainer.appendChild(article);
-        });
-    } else {
-        feedContainer.innerText = 'No recent updates from RSS feed.';
+    parseFeed(data) {
+        // Parse the XML data here
+        // Logic to convert XML to JSON and save to this.feedData
     }
 }
 
-document.addEventListener('DOMContentLoaded', fetchRSSFeed);
+class RSSManager {
+    constructor(feeds) {
+        this.feeds = feeds.map(url => new RSSFeed(url));
+    }
+
+    async fetchAllFeeds() {
+        const fetchPromises = this.feeds.map(feed => feed.fetchFeed());
+        await Promise.all(fetchPromises);
+    }
+
+    getAllFeedData() {
+        return this.feeds.map(feed => feed.feedData);
+    }
+}
+
+// Example usage:
+const feeds = ['https://example.com/rss1', 'https://example.com/rss2'];
+const rssManager = new RSSManager(feeds);
+rssManager.fetchAllFeeds().then(() => {
+    console.log(rssManager.getAllFeedData());
+});
