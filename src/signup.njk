@@ -106,16 +106,30 @@ permalink: /signup/
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       
+      // TODO: In a production environment, send form data to a backend service
       // Get form data
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
       
-      // Display success message
+      // Display success message using safe DOM manipulation
       formMessage.className = 'form-message success';
-      formMessage.innerHTML = '<strong>Thank you for signing up!</strong><br>You have successfully subscribed to our newsletter. We\'ll keep you updated with the latest pickleball news and events.';
+      formMessage.textContent = '';
       
-      // Log the data (in a real application, this would be sent to a server)
-      console.log('Newsletter signup data:', data);
+      const strongEl = document.createElement('strong');
+      strongEl.textContent = 'Thank you for signing up!';
+      formMessage.appendChild(strongEl);
+      
+      const br = document.createElement('br');
+      formMessage.appendChild(br);
+      
+      const messageText = document.createTextNode('You have successfully subscribed to our newsletter. We\'ll keep you updated with the latest pickleball news and events.');
+      formMessage.appendChild(messageText);
+      
+      // In production, this data would be sent to a server via fetch/axios
+      // For development/demo purposes only - remove in production
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        console.log('Newsletter signup data:', data);
+      }
       
       // Reset form
       form.reset();
