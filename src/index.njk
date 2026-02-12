@@ -1,0 +1,62 @@
+---
+layout: base.njk
+title: Home
+description: Your source for pickleball news, tips, events, and community updates in the Netherlands and beyond
+---
+
+<section class="hero">
+  <div class="container">
+    <h1>Welcome to PickleNL</h1>
+    <p class="lead">Your source for the latest pickleball news, tips, and community updates</p>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container">
+    <h2>Latest Updates</h2>
+    
+    {% if collections.aggregatedItems.length > 0 %}
+      <div class="items-grid">
+        {% for item in collections.aggregatedItems.slice(0, 12) %}
+          <article class="item-card">
+            <h3><a href="{{ item.link }}" target="_blank" rel="noopener noreferrer">{{ item.title }}</a></h3>
+            <p class="meta">
+              <span class="source">{{ item.source }}</span>
+              <span class="date">{{ item.pubDate | date("%B %d, %Y") }}</span>
+            </p>
+            <p class="excerpt">{{ item.content | truncate(150) }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>No items available at the moment. Check back soon!</p>
+    {% endif %}
+
+    <div class="cta">
+      <a href="/rss.xml" class="button">Subscribe to RSS Feed</a>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="container">
+    <h2>What We Offer</h2>
+    <div class="features-grid">
+      <div class="feature">
+        <h3>📰 Newsletter</h3>
+        <p>Stay updated with our curated newsletter featuring the best pickleball content.</p>
+        <a href="/newsletter/">Learn More</a>
+      </div>
+      <div class="feature">
+        <h3>📅 Events</h3>
+        <p>Discover upcoming pickleball tournaments, meetups, and community events.</p>
+        <a href="/events/">View Events</a>
+      </div>
+      <div class="feature">
+        <h3>💡 Tips & Tricks</h3>
+        <p>Improve your game with expert tips, techniques, and training advice.</p>
+        <a href="/tips/">Get Tips</a>
+      </div>
+    </div>
+  </div>
+</section>
