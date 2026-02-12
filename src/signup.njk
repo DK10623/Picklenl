@@ -1,0 +1,143 @@
+---
+layout: base.njk
+title: Newsletter Signup
+description: Sign up for our pickleball newsletter and stay connected with the community
+permalink: /signup/
+---
+
+<section class="hero-small">
+  <div class="container">
+    <h1>Newsletter Signup</h1>
+    <p class="lead">Join our community and stay updated with the latest pickleball news</p>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container">
+    <div class="signup-form-wrapper">
+      <h2>Subscribe to Our Newsletter</h2>
+      <p>Fill out the form below to receive regular updates about pickleball news, events, tips, and community updates.</p>
+      
+      <form id="newsletter-signup-form" class="signup-form">
+        <div class="form-group">
+          <label for="name">Name <span class="required">*</span></label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address <span class="required">*</span></label>
+          <textarea id="address" name="address" rows="3" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email <span class="required">*</span></label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone">
+          <small class="form-text">Optional</small>
+        </div>
+
+        <div class="form-group">
+          <label>Do you have a pickleball rating? <span class="required">*</span></label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="has_rating" value="yes" required>
+              <span>Yes</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="has_rating" value="no" required>
+              <span>No</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group" id="rating-level-group" style="display: none;">
+          <label for="rating_level">What is your rating? <span class="required">*</span></label>
+          <select id="rating_level" name="rating_level">
+            <option value="">Select your rating</option>
+            <option value="2.0">2.0</option>
+            <option value="2.5">2.5</option>
+            <option value="3.0">3.0</option>
+            <option value="3.5">3.5</option>
+            <option value="4.0">4.0</option>
+            <option value="4.5">4.5</option>
+            <option value="5.0">5.0</option>
+            <option value="5.5">5.5+</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="button">Sign Up</button>
+        </div>
+
+        <div id="form-message" class="form-message"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Handle conditional display of rating level field
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('newsletter-signup-form');
+    const hasRatingRadios = document.querySelectorAll('input[name="has_rating"]');
+    const ratingLevelGroup = document.getElementById('rating-level-group');
+    const ratingLevelSelect = document.getElementById('rating_level');
+    const formMessage = document.getElementById('form-message');
+
+    // Show/hide rating level based on rating question
+    hasRatingRadios.forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        if (this.value === 'yes') {
+          ratingLevelGroup.style.display = 'block';
+          ratingLevelSelect.required = true;
+        } else {
+          ratingLevelGroup.style.display = 'none';
+          ratingLevelSelect.required = false;
+          ratingLevelSelect.value = '';
+        }
+      });
+    });
+
+    // Handle form submission
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // TODO: In a production environment, send form data to a backend service
+      // Get form data
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      
+      // Display success message using safe DOM manipulation
+      formMessage.className = 'form-message success';
+      formMessage.textContent = '';
+      
+      const strongEl = document.createElement('strong');
+      strongEl.textContent = 'Thank you for signing up!';
+      formMessage.appendChild(strongEl);
+      
+      const br = document.createElement('br');
+      formMessage.appendChild(br);
+      
+      const messageText = document.createTextNode('You have successfully subscribed to our newsletter. We\'ll keep you updated with the latest pickleball news and events.');
+      formMessage.appendChild(messageText);
+      
+      // In production, this data would be sent to a server via fetch/axios
+      // For development/demo purposes only - remove in production
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        console.log('Newsletter signup data:', data);
+      }
+      
+      // Reset form
+      form.reset();
+      ratingLevelGroup.style.display = 'none';
+      ratingLevelSelect.required = false;
+      
+      // Scroll to message
+      formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+</script>
