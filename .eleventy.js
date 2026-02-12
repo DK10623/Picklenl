@@ -2,6 +2,9 @@ module.exports = function(eleventyConfig) {
   // Copy CNAME file for custom domain
   eleventyConfig.addPassthroughCopy("CNAME");
   
+  // Copy .nojekyll file to disable Jekyll processing on GitHub Pages
+  eleventyConfig.addPassthroughCopy(".nojekyll");
+  
   // Copy static assets
   eleventyConfig.addPassthroughCopy("src/assets");
   
