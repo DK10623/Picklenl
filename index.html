@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="5;url=https://www.picklenl.com">
+    <title>PickleNL - Configuration Required</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        
+        .icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .alert {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .alert h3 {
+            color: #856404;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .alert ol {
+            margin-left: 20px;
+            color: #856404;
+        }
+        
+        .alert li {
+            margin: 8px 0;
+        }
+        
+        .code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .success {
+            background: #d4edda;
+            border: 1px solid #28a745;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .link:hover {
+            text-decoration: underline;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🏓</div>
+        <h1>PickleNL - Configuration Required</h1>
+        
+        <p>The PickleNL website is built and ready, but <strong>GitHub Pages needs to be configured</strong> to deploy it.</p>
+        
+        <div class="alert">
+            <h3>⚙️ Required Configuration (One-time setup)</h3>
+            <ol>
+                <li>Go to <a href="https://github.com/DK10623/Picklenl/settings/pages" target="_blank" class="link">Repository Settings → Pages</a></li>
+                <li>Under <span class="code">Build and deployment</span> → <span class="code">Source</span></li>
+                <li>Select <strong>"GitHub Actions"</strong> from the dropdown</li>
+                <li>Save the settings</li>
+            </ol>
+        </div>
+        
+        <div class="success">
+            ✅ Once configured, the site will be live at <a href="https://www.picklenl.com" class="link">www.picklenl.com</a> within 1-2 minutes!
+        </div>
+        
+        <p style="margin-top: 20px; font-size: 14px; color: #999;">
+            Redirecting in 5 seconds<span class="spinner"></span>
+        </p>
+    </div>
+</body>
+</html>
