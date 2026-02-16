@@ -4,6 +4,16 @@
 
 PickleNL is a static website that aggregates content from multiple pickleball RSS feeds and presents them in a clean, accessible format. The site is built with [Eleventy](https://www.11ty.dev/) and automatically deployed to GitHub Pages at [www.picklenl.com](https://www.picklenl.com).
 
+## ⚠️ Important: GitHub Pages Configuration Required
+
+> **If you see a 404 error or configuration page**, GitHub Pages needs a one-time setup:
+> 
+> 1. Go to [**Settings → Pages**](https://github.com/DK10623/Picklenl/settings/pages)
+> 2. Under **"Source"**, select **"GitHub Actions"**
+> 3. Save and wait 1-2 minutes for deployment
+>
+> **That's it!** The site will be live at www.picklenl.com. See [PAGES_CONFIGURATION.md](PAGES_CONFIGURATION.md) for details.
+
 ## Features
 
 - 📰 **RSS Aggregation**: Automatically fetches and combines content from multiple external pickleball news sources
