@@ -189,6 +189,28 @@ Edit the following files to update page content:
 - `src/newsletter.njk` - Newsletter page
 - `src/events.njk` - Events page
 - `src/tips.njk` - Tips page
+- `src/signup.njk` - Newsletter signup form
+
+## Newsletter & Contact Data
+
+### Newsletter Signup Form
+
+The site includes a newsletter signup form at `/signup/` that collects:
+- Name, address, email, and phone number
+- Pickleball rating information
+
+### Where Contact Data is Recorded
+
+All form submissions are sent to and stored by **Formspree**, a third-party form backend service. This allows the static site to collect and store user data without requiring a backend server.
+
+**📄 See [CONTACT_DATA.md](CONTACT_DATA.md) for complete details on:**
+- How to set up your Formspree account (required for form to work)
+- Where to access submitted contact information
+- How to export subscriber data for email marketing
+- Data privacy and security information
+- Troubleshooting form submission issues
+
+**⚠️ Important:** After deploying the site, you must configure Formspree by replacing `YOUR_FORM_ID` in `src/signup.njk` with your actual Formspree form ID. See CONTACT_DATA.md for step-by-step instructions.
 
 ## Troubleshooting
 
